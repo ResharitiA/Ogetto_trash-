@@ -79,7 +79,12 @@ async function loginUser() {
     try {
         const response = await fetch('login.php', {method: 'POST', body: formData});
         const result = await response.text();
-        alert(result);
+        
+        if (result === 'success') {
+            window.location.href = 'personal.php';  // ✅ РЕДИРЕКТ В КАБИНЕТ
+        } else {
+            alert(result);  // ✅ ТОЛЬКО ТЕКСТ ОШИБКИ
+        }
     } catch (error) {
         alert('Ошибка сервера!');
     }

@@ -14,14 +14,14 @@ if ($_POST['login'] && $_POST['password']) {
         if (password_verify($_POST['password'], $row['password'])) {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user'] = $login;
-            echo "Вход успешен! ID: " . $row['id'];
+            echo "success";  // ответ для JS
         } else {
-            echo "Неверный пароль!";
+            echo "Неверный логин или пароль";
         }
     } else {
-        echo "Пользователь не найден!";
+        echo "Неверный логин или пароль";
     }
-    $stmt->close();
+} else {
+    echo "Пожалуйста, введите логин и пароль";
 }
-$conn->close();
 ?>
