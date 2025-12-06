@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$user = 'root';        // стандарт для OpenServer/XAMPP
+$user = 'root';        
 $pass = '';            // пустой для локального сервера
 $dbname = 'auth_db';
 
