@@ -7,15 +7,18 @@
 </head>
 <body>
     <div class="profile-container">
-        <img id="avatar" class="avatar" src="https://via.placeholder.com/100/cccccc/ffffff?text=👤" alt="Аватарка">
-        <button class="btn" onclick="changeAvatar()">Редактировать аватар</button>
-        <div class="profile-info">
-            <label>Имя:</label>
-            <input type="text" id="name" value="Иван">
-            <label>Email:</label>
-            <input type="email" id="email" value="ivan@example.com">
+        <div class="avatar-wrapper">
+            <img id="avatar" class="avatar" src="ВАШ_ПУТЬ_К_ФОТО.jpg" alt="">
+            <button class="photo-btn" onclick="changeAvatar()">📷</button>
         </div>
-        <button class="btn login-btn" onclick="login()">Войти</button>
+        <div class="profile-info">
+            <p><strong>Имя:</strong> <span id="name">Иван</span></p>
+            <p><strong>Email:</strong> <span id="email">ivan@example.com</span></p>
+        </div>
+        <div class="stats">
+            <p><span class="coin-icon">🪙</span> OggetoCoin: <span id="coins">0</span></p>
+        </div>
+        <button class="btn edit-btn" onclick="editProfile()">Редактировать профиль</button>
     </div>
     <script src="script.js"></script>
 </body>

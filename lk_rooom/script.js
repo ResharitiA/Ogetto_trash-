@@ -5,7 +5,9 @@ function changeAvatar() {
     }
 }
 
-function showStats() {
-    const stats = document.getElementById('stats');
-    stats.classList.toggle('hidden');
+function editProfile() {
+    const newName = prompt("Введите новое имя:", document.getElementById('name').textContent);
+    const newEmail = prompt("Введите новый email:", document.getElementById('email').textContent);
+    if (newName) document.getElementById('name').textContent = newName;
+    if (newEmail) document.getElementById('email').textContent = newEmail;
 }
