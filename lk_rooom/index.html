@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="profile-container">
+        <img id="avatar" class="avatar" src="https://via.placeholder.com/100" alt="Аватарка">
+        <button onclick="changeAvatar()">Редактировать аватар</button>
+        <div class="profile-info">
+            <label>Имя:</label>
+            <input type="text" id="name" value="Иван">
+            <label>Email:</label>
+            <input type="email" id="email" value="ivan@example.com">
+        </div>
+        <button onclick="showStats()">Очки и OggetoCoin</button>
+        <div id="stats" class="stats hidden">
+            <p>Очки: <span id="points">100</span></p>
+            <p>OggetoCoin: <span id="coins">50</span></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
