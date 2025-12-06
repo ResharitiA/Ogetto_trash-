@@ -9,18 +9,19 @@
 <body>
     <div class="container">
         <div id="loginForm">
-            <h2>[translate:Вход]</h2>
-            <input type="text" id="login" placeholder="[translate:Логин]">
-            <input type="password" id="password" placeholder="[translate:Пароль]">
-            <button onclick="loginUser()">[translate:Войти]</button>
-            <p>[translate:Нет аккаунта?] <a href="#" onclick="showRegister()">[translate:Регистрация]</a></p>
+            <h2>Вход</h2>
+            <input type="text" id="login" placeholder="Логин">
+            <input type="password" id="password" placeholder="Пароль">
+            <button onclick="loginUser()">Войти</button>
+            <p>Нет аккаунта? <a href="#" onclick="showRegister()">Регистрация</a></p>
         </div>
         <div id="registerForm" style="display:none;">
-            <h2>[translate:Регистрация]</h2>
-            <input type="text" id="regLogin" placeholder="[translate:Логин]">
-            <input type="password" id="regPassword" placeholder="[translate:Пароль]">
-            <button onclick="registerUser()">[translate:Зарегистрироваться]</button>
-            <p>[translate:Есть аккаунт?] <a href="#" onclick="showLogin()">[translate:Вход]</a></p>
+            <h2>Регистрация</h2>
+            <input type="text" id="regLogin" placeholder="Логин">
+            <input type="password" id="regPassword" placeholder="Пароль">
+            <input type="password" id="regPassword2" placeholder="Повторите пароль">
+            <button onclick="registerUser()">Зарегистрироваться</button>
+            <p>Есть аккаунт? <a href="#" onclick="showLogin()">Вход</a></p>
         </div>
     </div>
     <script src="script.js"></script>

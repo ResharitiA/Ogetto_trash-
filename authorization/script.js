@@ -11,9 +11,21 @@ function showLogin() {
 async function registerUser() {
     const login = document.getElementById('regLogin').value.trim();
     const password = document.getElementById('regPassword').value;
+    const password2 = document.getElementById('regPassword2').value;
     
-    if (!login || !password) {
-        alert('[translate:Заполните все поля!]');
+    if (!login || !password || !password2) {
+        alert('Заполните все поля!');
+        return;
+    }
+    
+    if (password !== password2) {
+        alert('Пароли не совпадают!');
+        document.getElementById('regPassword2').value = '';
+        return;
+    }
+    
+    if (password.length < 3) {
+        alert('Пароль слишком короткий!');
         return;
     }
     
@@ -32,9 +44,10 @@ async function registerUser() {
             showLogin();
             document.getElementById('regLogin').value = '';
             document.getElementById('regPassword').value = '';
+            document.getElementById('regPassword2').value = '';
         }
     } catch (error) {
-        alert('[translate:Ошибка сервера!]');
+        alert('Ошибка сервера!');
     }
 }
 
@@ -43,7 +56,7 @@ async function loginUser() {
     const password = document.getElementById('password').value;
     
     if (!login || !password) {
-        alert('[translate:Заполните все поля!]');
+        alert('Заполните все поля!');
         return;
     }
     
@@ -59,6 +72,6 @@ async function loginUser() {
         const result = await response.text();
         alert(result);
     } catch (error) {
-        alert('[translate:Ошибка сервера!]');
+        alert('Ошибка сервера!');
     }
 }
