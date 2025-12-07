@@ -1,20 +1,13 @@
 <?php
 session_start();
 
+// Если пользователь не авторизован, редирект на страницу входа
 if (!isset($_SESSION['user'])) {
     header("Location: index.html");
     exit();
 }
+
+// Если авторизован — редирект на страницу профиля
+header("Location: lk_rooom/index.html");
+exit();
 ?>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Личный кабинет</title>
-</head>
-<body>
-<h1>Добро пожаловать, <?= htmlspecialchars($_SESSION['user']); ?></h1>
-<p>Это ваша личная страница.</p>
-<a href="logout.php">Выйти</a>
-</body>
-</html>
