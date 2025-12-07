@@ -89,3 +89,7 @@ async function loginUser() {
         alert('Ошибка сервера!');
     }
 }
+
+function startSorting() {
+    window.location.href = '/lk_rooom2/ls_rooooom/index.html';
+}
