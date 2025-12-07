@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сортировка мусора</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Полоска этапов -->
+    <div class="progress-bar">
+      <div class="stage active" data-stage="1">1. Тип</div>
+      <div class="stage" data-stage="2">2. Материалы</div>
+      <div class="stage" data-stage="3">3. Инструкции</div>
+      <div class="stage" data-stage="4">4. Готово</div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="trash-emoji">🗑</div>
+        <div id="question" class="question">Какой тип мусора перед вами?</div>
+        
+        <!-- Этап 1: Выбор типа -->
+        <div id="stage1" class="stage-content active">
+          <button id="whole-btn" class="type-btn whole-btn">Цельный предмет</button>
+          <button id="parts-btn" class="type-btn parts-btn">Из нескольких частей</button>
+        </div>
+
+        <!-- Этап 2: Материалы -->
+        <div id="stage2" class="stage-content">
+          <h3>Выберите материалы</h3>
+          <div class="materials-grid">
+            <label><input type="checkbox" value="пластик"> Пластик</label>
+            <label><input type="checkbox" value="стекло"> Стекло</label>
+            <label><input type="checkbox" value="металл"> Металл</label>
+            <label><input type="checkbox" value="бумага"> Бумага</label>
+            <label><input type="checkbox" value="органика"> Органика</label>
+          </div>
+          <button class="next-btn">Далее</button>
+        </div>
+
+        <!-- Этап 3: Инструкции -->
+        <div id="stage3" class="stage-content">
+          <h3>Инструкции по утилизации</h3>
+          <div class="instructions">
+            <p>📋 Пластик → желтый контейнер</p>
+            <p>🔹 Стекло → зеленый контейнер</p>
+            <p>♻️ Металл → синий контейнер</p>
+          </div>
+          <button class="finish-btn">Готово!</button>
+        </div>
+
+        <!-- Этап 4: Завершение -->
+        <div id="stage4" class="stage-content">
+          <h3>✅ Отлично!</h3>
+          <p>Мусор правильно отсортирован!</p>
+          <button class="restart-btn">Новый мусор</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="start-btn" class="start-btn">Начать сортировку 🗑</button>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>

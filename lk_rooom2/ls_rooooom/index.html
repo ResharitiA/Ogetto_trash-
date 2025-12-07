@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSort ♻️ - Сортировка отходов</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>♻️</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="earth-container">
+        <div class="earth"></div>
+    </div>
+    <div class="thumb-up-container" onclick="showNotification('Спасибо за заботу о планете! 🌍')">
+        <div class="thumb-up">👍</div>
+    </div>
+    <div class="app-container">
+        <div class="recycle-badge" onclick="showNotification('EcoSort ♻️ - Сортируй правильно!')">♻️</div>
+        <div class="step active" id="step1">
+            <div class="step-header">
+                <div class="step-icon">🗑️</div>
+                <h1 class="step-title">Какой мусор у вас?</h1>
+                <p class="step-subtitle">Выберите тип предмета для сортировки</p>
+            </div>
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <div class="step-indicator active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Тип</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Материал</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Инструкции</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Готово</div>
+                    </div>
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn" onclick="selectComplexity('single')">
+                    <i class="fas fa-cube"></i>
+                    <span class="btn-text">Цельный предмет</span>
+                    <span class="btn-desc">Бутылка, банка, пакет - один материал</span>
+                </button>
+                <button class="btn btn-secondary" onclick="selectComplexity('complex')">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <span class="btn-text">Сложный предмет</span>
+                    <span class="btn-desc">Стакан+крышка+трубочка - несколько материалов</span>
+                </button>
+            </div>
+            <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
+                <i class="fas fa-info-circle"></i> Не уверены? Начните с "Цельный предмет"
+            </div>
+        </div>
+        <div class="step" id="step1_5">
+            <div class="step-header">
+                <div class="step-icon">🧩</div>
+                <h1 class="step-title">Сложный предмет</h1>
+                <p class="step-subtitle">Сколько отдельных частей у вашего предмета?</p>
+            </div>
+            <div class="counter-container">
+                <div class="counter-title">
+                    Например: Стакан (1) + Крышка (2) + Трубочка (3) = <span style="color: #FF8C00;">3 части</span>
+                </div>
+                <div class="counter-display">
+                    <button class="counter-btn" onclick="changePartsCount(-1)">-</button>
+                    <div class="counter-value" id="partsCount">3</div>
+                    <button class="counter-btn" onclick="changePartsCount(1)">+</button>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn" onclick="startComplexSorting()">
+                    <i class="fas fa-play"></i>
+                    <span class="btn-text">Начать сортировку</span>
+                    <span class="btn-desc" id="partsText">3 части</span>
+                </button>
+                <button class="btn btn-small" onclick="showStep('step1')">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </button>
+            </div>
+        </div>
+        <div class="step" id="step2">
+            <div class="step-header">
+                <div class="step-icon">🔍</div>
+                <h1 class="step-title" id="step2Title">Выберите категорию</h1>
+                <p class="step-subtitle" id="step2Subtitle">Какой основной материал у предмета?</p>
+            </div>
+            <div class="categories-grid" id="categoriesContainer"></div>
+            <div class="btn-container">
+                <button class="btn btn-small" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </button>
+                <button class="btn" id="nextBtn" onclick="nextStep()" disabled>
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Далее</span>
+                </button>
+            </div>
+        </div>
+        <div class="step" id="step2_5">
+            <div class="step-header">
+                <div class="step-icon">♻️</div>
+                <h1 class="step-title">Тип пластика</h1>
+                <p class="step-subtitle">Найдите маркировку на предмете (обычно на дне)</p>
+            </div>
+            <div class="plastics-grid" id="plasticsContainer"></div>
+            <div class="btn-container">
+                <button class="btn btn-small" onclick="showStep('step2')">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </button>
+            </div>
+        </div>
+        <div class="step" id="step3">
+            <div class="step-header">
+                <div class="step-icon">📋</div>
+                <h1 class="step-title" id="step3Title">Инструкции по утилизации</h1>
+                <p class="step-subtitle" id="step3Subtitle">Следуйте этим шагам для правильной сортировки</p>
+            </div>
+            <div class="instructions-container" id="instructionsContainer"></div>
+            <div class="btn-container">
+                <button class="btn btn-small" onclick="showStep('step2')">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Назад</span>
+                </button>
+                <button class="btn btn-danger" onclick="completeSorting()">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Завершить сортировку</span>
+                </button>
+            </div>
+        </div>
+        <div class="success-screen" id="step4">
+            <div class="success-icon">👍</div>
+            <h1 class="success-title">Отличная работа!</h1>
+            <p>Вы правильно отсортировали отходы</p>
+            <div class="success-points" id="earnedPoints">+10</div>
+            <p>эко-баллов начислено</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="totalPoints">0</span>
+                    <span class="stat-label">Всего баллов</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="itemsSorted">0</span>
+                    <span class="stat-label">Предметов отсортировано</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="accuracyRate">100%</span>
+                    <span class="stat-label">Точность</span>
+                </div>
+            </div>
+            <div class="btn-container" style="margin-top: 40px;">
+                <button class="btn" onclick="startOver()">
+                    <i class="fas fa-recycle"></i>
+                    <span>Сортировать ещё предмет</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
