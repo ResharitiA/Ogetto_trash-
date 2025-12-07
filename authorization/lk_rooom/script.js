@@ -11,3 +11,7 @@ function editProfile() {
     if (newName) document.getElementById('name').textContent = newName;
     if (newEmail) document.getElementById('email').textContent = newEmail;
 }
+
+function startSorting() {
+    alert("Функция сортировки мусора пока не реализована.");
+}

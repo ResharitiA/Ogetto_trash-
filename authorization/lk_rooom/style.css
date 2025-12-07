@@ -75,7 +75,7 @@ body {
 .profile-info p {
     margin: 10px 0;
     font-size: 16px;
-    font-weight: 300; /* Менее жирный шрифт */
+    font-weight: 300;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -115,6 +115,27 @@ body {
 
 .btn:hover {
     background: #fda085;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.start-btn {
+    padding: 15px 30px;
+    margin: 15px 5px;
+    border: none;
+    border-radius: 8px;
+    background: #66bb6a; /* Зелёный цвет */
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.start-btn:hover {
+    background: #43a047; /* Темно-зелёный при наведении */
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
