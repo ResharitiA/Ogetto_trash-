@@ -13,5 +13,6 @@ function editProfile() {
 }
 
 function startSorting() {
-    alert("Функция сортировки мусора пока не реализована.");
+    // Переход на страницу сортировки
+    window.location.href = "ls_rooooom/index.html"; // путь относительно текущего файла
 }
