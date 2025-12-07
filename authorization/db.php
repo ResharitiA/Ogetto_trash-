@@ -7,7 +7,7 @@ $host = 'db';
 $port = '5432';
 $dbname = 'auth_db';
 $user = 'postgres';
-$pass = 'Resh1900$$#KKoPP';
+$pass = 'Resh1900$#KKoPP';
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$pass");
 
